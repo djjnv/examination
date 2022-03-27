@@ -5,6 +5,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.0-9/css/all.css" integrity="sha512-h7GJ1/B7ne4IeavUbcBsiAfjGg0HOg0jbLn0q3nm3iCZwDJSuRrW3xqsri7KMR2wEKOOQlf6zKCoS9jk0AtFPQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>how to confirm password</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
@@ -15,20 +16,17 @@ session_start();
 
         input[type=text], input[type=password]{
         width: 100%;
-        padding: 12px 20px;
+        padding: 12px 6px 12px 48px;
         margin: 8px 0;
         display: inline-block;
         border: 1px solid #ccc;
         border-radius: 4px;
         box-sizing: border-box;
         }
-        div {
-        position:absolute;
-        top:40%;
-        left:50%;
-        transform:translate(-50%,-50%);
-        border-radius: 5px;
-        background-color: #f2f2f2;
+        .form-wrapper {
+            box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+        border-radius: 8px;
+        background-color: #fff;
         padding: 20px;
         width:30%;
         margin: 0 auto;
@@ -49,7 +47,7 @@ session_start();
         text-transform:uppercase;
         color:#5352ed;
         }
-        input[type=submit] {
+        .submit-btn {
         width: 100%;
         background-color: #5352ed;
         color: white;
@@ -67,15 +65,23 @@ session_start();
 
     </style>
 </head>
-<body>
-    <div>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+<body style="display: flex; align-items: center; justify-content: center; min-height: 100vh; height: auto; width: 100%;">
+    <div class="form-wrapper">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" style="position:relative; overflow:hidden; ">
+        <img src="assets/images/user-image.jpg" alt="" style="width:100%;max-width: 170px; height:auto; display:block; margin :2rem auto; border-radius: 50%; ">
         <h1>Create Account</h1>
-        <input type="text" name="name" placeholder="Enter name">
+        <div style="position: relative; width: 100%">
+            <i class="fa fa-user" style="position: absolute;
+            top: 19px;
+            left: 20px;
+            font-size: 16px;"></i>
+            <input type="text" name="name" placeholder="Enter name">
+        </div>
+        
         <input type="text" name="reg" placeholder="Enter Registration Number">
         <input type="password" name="pass" placeholder="Enter Password">
         <input type="text" name="cpass" placeholder="Confirm Password">
-        <input type="submit" value="REGISTER">
+        <button type="submit" class="submit-btn" name="submitBtn">REGISTER</button> 
         <?php
 
             $name = $reg = $pass = $cpass = "";
